@@ -1,5 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>{{ request.user.username|default:'User' }}'s Profile Page</h1>
+    <h1>{{ request.user.first_name|default:'User' }}'s Profile Page</h1>
+
+    {% with request.user as user %}
+
+        <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Username: {{ user.username }}</p>
+
+    {% endwith %}
+
+    <a href="{% url 'accounts:update' %}" class="btn btn-outline-primary mr-2">Edit</a>
+    <a href="{% url 'accounts:update.password' %}" class="btn btn-outline-success">Change Password</a>
+
 {% endblock %}

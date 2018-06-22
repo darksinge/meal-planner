@@ -1,17 +1,33 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% block head %}
     <meta charset="UTF-8">
     <title>MealPlanner</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">#}
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.v4.css' %}">
+    {% endblock %}
 </head>
+{#<body style="background: cadetblue;">#}
 <body>
 
     {% include "includes/navbar.html" %}
     <div class="container">
-        {% block content %}
+        <div class="row justify-content-md-center">
+            <div class="col">
 
-        {% endblock %}
+            </div>
+            <div class="col-lg-8 col-md-10 col-sm-12">
+                {% block content %}
+
+                {% endblock %}
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
     </div>
 
 </body>

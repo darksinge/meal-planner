@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load extras %}
+
+{% block content %}
+    <div class="mt-lg-5 mt-md-5 mt-3">
+    <form method="post" action="{{ form_action }}">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+            <label id="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field|addcss:"form-control" }}
+
+            {% for error in field.errors %}
+            <small id="{{ field.name }}_help" class="form-text text-muted"><span class="text-danger">{{ error }}</span></small>
+            {% endfor %}
+
+        </div>
+        {% endfor %}
+
+        <input type="submit" value="Save" class="btn btn-outline-success mr-2">
+        {% include 'includes/back-button.html' %}
+
+    </form>
+    </div>
+
+{% endblock %}
