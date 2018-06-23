@@ -9,12 +9,27 @@
         <ul class="navbar-nav mr-auto">
 
             {% url 'accounts:profile' as profile_url %}
+            {% url 'recipes:recipes' as recipes_url %}
+
+
+            {% if request.user.is_authenticated %}
+            {% url 'recipes:recipes.owned' request.user.id as my_recipes_url %}
+            <li class="nav-item {% if request.path == recipes_url %}active{% endif %}">
+                <a class="nav-link" href="{% url 'recipes:recipes.owned' request.user.id %}">My Recipes
+                    {% if request.path == recipes_url %}<span class="sr-only">(current)</span>{% endif %}
+                </a>
+            </li>
+            {% else %}
+            <li class="nav-item {% if request.path == recipes_url %}active{% endif %}">
+                <a class="nav-link" href="{% url 'recipes:recipes' %}">Recipes
+                    {% if request.path == recipes_url %}<span class="sr-only">(current)</span>{% endif %}
+                </a>
+            </li>
+            {% endif %}
 
             <li class="nav-item {% if request.path == profile_url %}active{% endif %}">
                 <a class="nav-link" href="{% url 'accounts:profile' %}">Profile
-                    {% if request.path == profile_url %}
-                        <span class="sr-only">(current)</span>
-                    {% endif %}
+                    {% if request.path == profile_url %}<span class="sr-only">(current)</span>{% endif %}
                 </a>
             </li>
 

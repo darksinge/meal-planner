@@ -19,5 +19,6 @@ from django.contrib import admin
 urlpatterns = [
     path('', include('planner.urls', namespace='planner')),
     path('admin', admin.site.urls),
-    path('profile/', include('accounts.urls', namespace='accounts'))
+    path('profile/', include('accounts.urls', namespace='accounts')),
+    path('recipe/', include('recipes.urls', namespace='recipes'))
 ]

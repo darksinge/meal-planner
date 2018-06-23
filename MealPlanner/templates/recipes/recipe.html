@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>{{ object.name }}</h2>
+
+    <p>{{ object.description }}</p>
+
+    <p>Ingredients</p>
+    <ul>
+        {% for ingredient in object.ingredients.all %}
+        <li>
+            {{ ingredient.name }}
+        </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
