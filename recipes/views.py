@@ -1,6 +1,7 @@
-from django.views.generic import CreateView, DetailView, ListView
-from .forms import CreateRecipeForm
-from .models import Recipe, Ingredient
+from django.views.generic import CreateView, DetailView, ListView, TemplateView
+from .forms import CreateRecipeForm, IngredientListItemForm
+from .models import Recipe, Ingredient, IngredientListItem
+from django.shortcuts import reverse
 
 
 class RecipeListView(ListView):
@@ -31,4 +32,18 @@ class RecipeView(DetailView):
 class RecipeCreateView(CreateView):
     form_class = CreateRecipeForm
     template_name = 'recipes/recipe-create.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['inglist_form_url'] = reverse('recipes:ingredientList.create')
+        return context
+
+
+class IngredientListItemCreateView(CreateView):
+    template_name = 'recipes/ingredient-list-item.html'
+    model = IngredientListItem
+    form_class = IngredientListItemForm
+
+    # def get(self, request, *args, **kwargs):
+
 

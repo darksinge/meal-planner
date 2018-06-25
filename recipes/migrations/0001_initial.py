@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='IngredientList',
+            name='IngredientListItem',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('amount', models.IntegerField(default=0)),
@@ -44,16 +44,16 @@ class Migration(migrations.Migration):
                 ('description', models.TextField(default='')),
                 ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='created_recipes', to=settings.AUTH_USER_MODEL)),
                 ('favorited_by', models.ManyToManyField(related_name='favorites', to=settings.AUTH_USER_MODEL)),
-                ('ingredients', models.ManyToManyField(through='recipes.IngredientList', to='recipes.Ingredient')),
+                ('ingredients', models.ManyToManyField(through='recipes.IngredientListItem', to='recipes.Ingredient')),
             ],
         ),
         migrations.AddField(
-            model_name='ingredientlist',
+            model_name='ingredientlistitem',
             name='measurement',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='recipes.Measurement'),
         ),
         migrations.AddField(
-            model_name='ingredientlist',
+            model_name='ingredientlistitem',
             name='recipe',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='recipes.Recipe'),
         ),

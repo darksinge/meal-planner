@@ -1,0 +1,20 @@
+<script type="text/javascript">
+$(() => {
+
+    const listContainer = $('.ingredient-list-container');
+
+    document.getElementById('{{ btn_id }}').addEventListener('click', () => {
+        getIngredientFormListItem();
+    });
+
+    function getIngredientFormListItem() {
+        $.get('{{ inglist_form_url }}', (form) => {
+            listContainer.append(form);
+        });
+    }
+
+    getIngredientFormListItem();
+
+
+});
+</script>

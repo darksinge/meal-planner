@@ -1,0 +1,23 @@
+{% load static %}
+{% load extras %}
+
+<div class="form-group">
+    <div class="row">
+
+        <div class="col">
+{#            <label for="{{ form.ingredient.id_for_label }}">{{ form.ingredient.label }}</label>#}
+            {{ form.amount|addcss:"form-control" }}
+        </div>
+
+        <div class="col">
+{#            <label for="{{ form.amount.id_for_label }}">{{ form.amount.label }}</label>#}
+            {{ form.measurement|addcss:"form-control" }}
+        </div>
+
+        <div class="col-6">
+{#            <label for="{{ form.measurement.id_for_label }}">{{ form.measurement.label }}</label>#}
+            {{ form.ingredient|addcss:"form-control" }}
+        </div>
+
+    </div>
+</div>

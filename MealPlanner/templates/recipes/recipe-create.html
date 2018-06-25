@@ -3,6 +3,7 @@
 
 {% block content %}
 <div class="container mt-5">
+    <h2>Create Recipe</h2>
     <form method="post">
     {% csrf_token %}
         {% for field in form %}
@@ -12,7 +13,20 @@
         </div>
         {% endfor %}
 
-        <input type="submit" class="btn btn-primary" value="Create">
+        <div class="align-content-end mb-2">
+            <button type="button" class="btn btn-outline-success" id="ingredientListBtn">+</button>
+        </div>
+
+        <div class="ingredient-list-container">
+
+        </div>
+
+        <input type="submit" class="btn btn-primary mb-5" value="Create">
     </form>
 </div>
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+{% include 'recipes/js/recipe-create.js.html' with form=form inglist_form_url=inglist_form_url btn_id='ingredientListBtn' %}
 {% endblock %}
